@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "webpack",
+    "build": "next build",
     "start": "next start",
     "lint": "npx eslint src/**/*.{jsx,js} --fix",
     "format": "npx prettier --write .",
@@ -30,7 +30,7 @@
     "jspdf": "^2.5.2",
     "jspdf-autotable": "^3.8.3",
     "lucide-react": "^0.439.0",
-    "next": "^14.2.10",
+    "next": "^14.2.15",
     "next-themes": "^0.3.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
