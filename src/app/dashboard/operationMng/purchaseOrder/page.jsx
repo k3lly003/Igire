@@ -18,8 +18,8 @@ import {
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
 import { data } from "./data"; // Import your data from data.js
-import EditOrder from "./EditOrder"; // Import edit dialog
-import DeleteOrder from "./DeleteOrder"; // Import delete dialog
+import EditOrder from "./editOrder"; // Import edit dialog
+import DeleteOrder from "./deleteOrder"; // Import delete dialog
 import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
@@ -36,11 +36,25 @@ export default function Stock() {
     const row = [];
 
     // Manually define the table headers, excluding "Action"
-    const tableHeaders = ["ID", "Name", "Location", "Size", "Entry Date", "Status"];
+    const tableHeaders = [
+      "ID",
+      "Name",
+      "Location",
+      "Size",
+      "Entry Date",
+      "Status",
+    ];
 
     // Populate the table rows with data, excluding the "Action" column
     data.forEach((item) => {
-      const rowData = [item.id, item.name, item.location, item.size, item.entryDate, item.status];
+      const rowData = [
+        item.id,
+        item.name,
+        item.location,
+        item.size,
+        item.entryDate,
+        item.status,
+      ];
       row.push(rowData);
     });
 
@@ -76,7 +90,7 @@ export default function Stock() {
     return data.filter(
       (item) =>
         item.name.toLowerCase().includes(searchTerm.toLowerCase()) &&
-        (categoryFilter === "" || item.status === categoryFilter)
+        (categoryFilter === "" || item.status === categoryFilter),
     );
   }, [searchTerm, categoryFilter]);
 
@@ -117,8 +131,8 @@ export default function Stock() {
               row.original.status === "Denied"
                 ? "text-red-600"
                 : row.original.status === "Approved"
-                ? "text-green-600"
-                : "text-yellow-600"
+                  ? "text-green-600"
+                  : "text-yellow-600"
             }`}
           >
             {row.original.status}
@@ -200,7 +214,6 @@ export default function Stock() {
         </div>
       </div>
 
-  
       <div className="rounded-md border">
         <Table>
           <TableHeader className="bg-[#EFF4FA]">
@@ -212,7 +225,7 @@ export default function Stock() {
                       ? null
                       : flexRender(
                           header.column.columnDef.header,
-                          header.getContext()
+                          header.getContext(),
                         )}
                   </TableHead>
                 ))}
@@ -222,17 +235,26 @@ export default function Stock() {
           <TableBody>
             {table.getRowModel().rows.length ? (
               table.getRowModel().rows.map((row) => (
-                <TableRow key={row.id} data-state={row.getIsSelected() && "selected"}>
+                <TableRow
+                  key={row.id}
+                  data-state={row.getIsSelected() && "selected"}
+                >
                   {row.getVisibleCells().map((cell) => (
                     <TableCell key={cell.id}>
-                      {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                      {flexRender(
+                        cell.column.columnDef.cell,
+                        cell.getContext(),
+                      )}
                     </TableCell>
                   ))}
                 </TableRow>
               ))
             ) : (
               <TableRow>
-                <TableCell colSpan={table.getAllColumns().length} className="h-24 text-center">
+                <TableCell
+                  colSpan={table.getAllColumns().length}
+                  className="h-24 text-center"
+                >
                   No results.
                 </TableCell>
               </TableRow>
@@ -243,24 +265,25 @@ export default function Stock() {
 
       {/* Pagination */}
       <div className="flex items-center justify-end mt-4">
-      <Button
-    onClick={() => table.previousPage()}
-    disabled={!table.getCanPreviousPage()}
-    className="px-1 py-1 flex items-center"
-  >
-    <BiChevronLeft size={20} className="" />
-  </Button>
-  <span className="mx-2">
-    Page {table.getState().pagination.pageIndex + 1} of {table.getPageCount()}
-  </span>
-  
-  <Button
-    onClick={() => table.nextPage()}
-    disabled={!table.getCanNextPage()}
-    className="px-1 py-1 flex items-center"
-  >
-    <BiChevronRight size={20} className="" />
-  </Button>
+        <Button
+          onClick={() => table.previousPage()}
+          disabled={!table.getCanPreviousPage()}
+          className="px-1 py-1 flex items-center"
+        >
+          <BiChevronLeft size={20} className="" />
+        </Button>
+        <span className="mx-2">
+          Page {table.getState().pagination.pageIndex + 1} of{" "}
+          {table.getPageCount()}
+        </span>
+
+        <Button
+          onClick={() => table.nextPage()}
+          disabled={!table.getCanNextPage()}
+          className="px-1 py-1 flex items-center"
+        >
+          <BiChevronRight size={20} className="" />
+        </Button>
       </div>
 
       {/* Edit and Delete Modals */}
@@ -277,7 +300,7 @@ export default function Stock() {
           order={selectedOrder}
           isOpen={isDeleteOpen}
           onClose={() => setDeleteOpen(false)}
-          onDelete={handleDelete}  
+          onDelete={handleDelete}
         />
       )}
     </div>

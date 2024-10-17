@@ -2,7 +2,7 @@
 
 import React, { useState, useMemo } from "react";
 import { HiOutlineSearch } from "react-icons/hi";
-import { FaPlusCircle,FaFileExport } from "react-icons/fa";
+import { FaPlusCircle, FaFileExport } from "react-icons/fa";
 import { MdMoreHoriz } from "react-icons/md";
 import {
   getCoreRowModel,
@@ -26,8 +26,8 @@ import {
   DropdownMenuItem,
 } from "@/components/ui/dropdown-menu";
 import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
-import EditStock from "./EditStock";
-import DeleteStock from "./DeleteStock";
+import EditStock from "./editStock";
+import DeleteStock from "./deleteStock";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
 
@@ -83,28 +83,41 @@ export default function Stock() {
     return data.filter(
       (item) =>
         item.product.toLowerCase().includes(productSearchTerm.toLowerCase()) &&
-        (locationFilter === "" || item.location.includes(locationFilter))
+        (locationFilter === "" || item.location.includes(locationFilter)),
     );
   }, [productSearchTerm, locationFilter]);
 
-  const handleExportPDF =()=>{
+  const handleExportPDF = () => {
     const doc = new jsPDF();
     const row = [];
 
-    const tableHeaders =["Product","Brand","Location","Size","Entry date","Additional specification"];
-  
-    data.forEach((item)=>{
-     const rowData =[item.product, item.brand, item.location, item.size, item.entryDate, item.additionalSpecific];
-     row.push(rowData);
-    }
-    );
+    const tableHeaders = [
+      "Product",
+      "Brand",
+      "Location",
+      "Size",
+      "Entry date",
+      "Additional specification",
+    ];
+
+    data.forEach((item) => {
+      const rowData = [
+        item.product,
+        item.brand,
+        item.location,
+        item.size,
+        item.entryDate,
+        item.additionalSpecific,
+      ];
+      row.push(rowData);
+    });
     doc.autoTable({
       head: [tableHeaders],
       body: row,
     });
 
-    doc.save("Stock.pdf")
-  }
+    doc.save("Stock.pdf");
+  };
 
   const table = useReactTable({
     data: filteredData,
@@ -122,7 +135,9 @@ export default function Stock() {
       {
         accessorKey: "location",
         header: () => <div className="text-left">Location</div>,
-        cell: ({ row }) => <div className="">{row.original.location.join(", ")}</div>,
+        cell: ({ row }) => (
+          <div className="">{row.original.location.join(", ")}</div>
+        ),
       },
       {
         accessorKey: "size",
@@ -137,7 +152,9 @@ export default function Stock() {
       {
         accessorKey: "additionalSpecific",
         header: () => <div className="text-left">Additional specification</div>,
-        cell: ({ row }) => <div className="">{row.original.additionalSpecific}</div>,
+        cell: ({ row }) => (
+          <div className="">{row.original.additionalSpecific}</div>
+        ),
       },
       {
         accessorKey: "image",
@@ -244,7 +261,10 @@ export default function Stock() {
                   <TableHead key={header.id}>
                     {header.isPlaceholder
                       ? null
-                      : flexRender(header.column.columnDef.header, header.getContext())}
+                      : flexRender(
+                          header.column.columnDef.header,
+                          header.getContext(),
+                        )}
                   </TableHead>
                 ))}
               </TableRow>
@@ -253,10 +273,16 @@ export default function Stock() {
           <TableBody>
             {table.getRowModel().rows.length ? (
               table.getRowModel().rows.map((row) => (
-                <TableRow key={row.id} data-state={row.getIsSelected() && "selected"}>
+                <TableRow
+                  key={row.id}
+                  data-state={row.getIsSelected() && "selected"}
+                >
                   {row.getVisibleCells().map((cell) => (
                     <TableCell key={cell.id}>
-                      {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                      {flexRender(
+                        cell.column.columnDef.cell,
+                        cell.getContext(),
+                      )}
                     </TableCell>
                   ))}
                 </TableRow>
@@ -274,46 +300,46 @@ export default function Stock() {
 
       {/* Pagination */}
       <div className="flex items-center justify-end mt-4">
-  <Button
-    onClick={() => table.previousPage()}
-    disabled={!table.getCanPreviousPage()}
-    className="px-1 py-1 flex items-center"
-  >
-    <BiChevronLeft size={20} className="" />
-  </Button>
-  <span className="mx-2">
-    Page {table.getState().pagination.pageIndex + 1} of {table.getPageCount()}
-  </span>
-  
-  <Button
-    onClick={() => table.nextPage()}
-    disabled={!table.getCanNextPage()}
-    className="px-1 py-1 flex items-center"
-  >
-    <BiChevronRight size={20} className="" />
-  </Button>
-</div>
+        <Button
+          onClick={() => table.previousPage()}
+          disabled={!table.getCanPreviousPage()}
+          className="px-1 py-1 flex items-center"
+        >
+          <BiChevronLeft size={20} className="" />
+        </Button>
+        <span className="mx-2">
+          Page {table.getState().pagination.pageIndex + 1} of{" "}
+          {table.getPageCount()}
+        </span>
+
+        <Button
+          onClick={() => table.nextPage()}
+          disabled={!table.getCanNextPage()}
+          className="px-1 py-1 flex items-center"
+        >
+          <BiChevronRight size={20} className="" />
+        </Button>
+      </div>
 
       {/* Edit Dialog */}
       <EditStock
-  open={openEditDialog}
-  onOpenChange={setOpenEditDialog}
-  selectedRowData={selectedRowData}
-  onSave={() => {
-    // Save logic goes here
-    setOpenEditDialog(false);
-  }}
-/>
+        open={openEditDialog}
+        onOpenChange={setOpenEditDialog}
+        selectedRowData={selectedRowData}
+        onSave={() => {
+          // Save logic goes here
+          setOpenEditDialog(false);
+        }}
+      />
 
-<DeleteStock
-  open={openDeleteDialog}
-  onOpenChange={setOpenDeleteDialog}
-  onDelete={() => {
-    // Delete logic goes here
-    setOpenDeleteDialog(false);
-  }}
-/>
-
+      <DeleteStock
+        open={openDeleteDialog}
+        onOpenChange={setOpenDeleteDialog}
+        onDelete={() => {
+          // Delete logic goes here
+          setOpenDeleteDialog(false);
+        }}
+      />
     </div>
   );
 }
