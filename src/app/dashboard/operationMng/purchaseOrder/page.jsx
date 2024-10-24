@@ -17,8 +17,8 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
-import EditOrder from "./EditOrder"; // Import edit dialog
-import DeleteOrder from "./DeleteOrder"; // Import delete dialog
+import EditOrder from "@/app/dashboard/operationMng/purchaseOrder/editOrder";
+import DeleteOrder from "@/app/dashboard/operationMng/purchaseOrder/DeleteOrder";
 import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
