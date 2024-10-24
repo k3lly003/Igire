@@ -7,8 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "npx eslint src/**/*.{jsx,js} --fix",
-    "format": "npx prettier --write .",
-    "prepare": "husky install"
+    "format": "npx prettier --write ."
   },
   "dependencies": {
     "@fortawesome/free-brands-svg-icons": "^6.6.0",
