@@ -26,8 +26,8 @@ import {
   DropdownMenuItem,
 } from "@/components/ui/dropdown-menu";
 import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
-import EditStock from "@/app/dashboard/operationMng/stock/stock-overview/editStock";
-import DeleteStock from "@/app/dashboard/operationMng/stock/stock-overview/DeleteStock";
+import EditStock from "./editStock";
+import DeleteStock from "./deleteStock";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
 
