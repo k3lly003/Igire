@@ -1,13 +1,28 @@
 "use client";
 
 import * as React from "react";
-import { ColumnDef, flexRender, getCoreRowModel, getPaginationRowModel, getSortedRowModel, getFilteredRowModel, useReactTable } from "@tanstack/react-table";
+import {
+  ColumnDef,
+  flexRender,
+  getCoreRowModel,
+  getPaginationRowModel,
+  getSortedRowModel,
+  getFilteredRowModel,
+  useReactTable,
+} from "@tanstack/react-table";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { GrFormPrevious } from "react-icons/gr";
 import { GrFormNext } from "react-icons/gr";
 import { HiOutlineSearch } from "react-icons/hi";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow, } from "@/components/ui/table";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
 import PurchaseRequestModal from "./purchaseRequestModal";
 import DeniedOrderModal from "./deniedOrderModal";
 
@@ -167,8 +182,8 @@ export default function Request() {
   };
 
   return (
-    <div className="w-full p-6">
-      <div className="flex items-center justify-between mb-3">
+    <div className="w-full sm:p-6 p-2">
+      <div className="flex flex-col sm:flex-row sm:items-center items-start gap-3 justify-between mb-3">
         <h1 className="text-md font-semibold">Order requisition</h1>
         <div className="relative w-80 ">
           <Input
@@ -239,18 +254,16 @@ export default function Request() {
         </Button>
       </div>
 
-      <div className="flex items-center justify-between mt-4 mb-3">
+      <div className="flex flex-col sm:flex-row sm:items-center items-start gap-3 justify-between mt-4 mb-3">
         <h1 className="text-md font-semibold">Order Decline</h1>
-        <div className="flex items-center">
-          <div className="relative w-80">
-            <Input
-              placeholder="Search by product..."
-              value={deniedGlobalFilter}
-              onChange={(event) => setDeniedGlobalFilter(event.target.value)}
-              className="pl-10"
-            />
-            <HiOutlineSearch className="absolute left-3 top-1/2 transform -translate-y-1/2" size={15} />
-          </div>
+        <div className="relative w-80 ">
+          <Input
+            placeholder="Search by product..."
+            value={deniedGlobalFilter}
+            onChange={(event) => setDeniedGlobalFilter(event.target.value)}
+            className="pl-10"
+          />
+          <HiOutlineSearch className="absolute left-3 top-1/2 transform -translate-y-1/2" />
         </div>
       </div>
 

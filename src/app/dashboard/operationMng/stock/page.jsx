@@ -62,7 +62,7 @@ export default function CeoStock() {
     getPaginationRowModel: getPaginationRowModel(),
     initialState: {
       pagination: {
-        pageSize: 5, // Set the number of rows per page
+        pageSize: 5, 
       },
     },
   });
@@ -70,7 +70,8 @@ export default function CeoStock() {
     <div className="w-full px-6">
       <div className="flex items-center justify-between mt-4 mb-3">
       <div>
-        <p className="py-4 text-md font-semibold">Stock overview</p>
+        <p className="py-4  text-md mr-1 md:mr-0 font-semibold">Stock overview</p>
+        
       </div>
         <div className="flex items-center max-w-lg">
           <div className="relative w-full">
@@ -84,11 +85,11 @@ export default function CeoStock() {
             />
           </div>
         </div>
-        <div className="flex items-center space-x-2">
+        <div className="flex mx-2  items-center space-x-2">
           
           <div>
           <select
-            className="border text-[15px] border-3  px-1 py-2 rounded-md"
+            className="border text-[15px] border-3 px-1 py-2 rounded-md"
             value={categoryFilter}
             onChange={(e) => setCategoryFilter(e.target.value)}
           >
@@ -102,7 +103,7 @@ export default function CeoStock() {
             <button
               className="flex items-center px-1 py-2 text-[15px] border rounded-md bg-green-600 text-white"
             >
-              <FaPlusCircle className="mr-1" /> Add stock
+              <FaPlusCircle className="mr-1" /><span className="hidden md:inline">Add stock</span> 
             </button>
           </a>
           </div>

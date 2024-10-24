@@ -37,7 +37,7 @@ export default function PartnershipInquiryForm() {
             <div className='font-bold text-white w-full mt-[8.4rem] text-center tablet:text-left'>
                 <h2 className="text-xl text-center">For partnership inquiries</h2>
                 <div className="w-full p-8 flex flex-col justify-center laptop:flex-row tablet:flex-col">
-                    <div className="w-full desktop:w-[45.3rem] text-left h-[42.6rem] laptop:w-[45.3rem] bg-white dark:bg-gray-800 drop-shadow-md desktop:px-[4.4rem] tablet:px-[2rem] px-[1rem]">
+                    <div className="border w-full desktop:w-[45.3rem] text-left h-[42.6rem] laptop:w-[45.3rem] bg-white dark:bg-gray-800 drop-shadow-md desktop:px-[4.4rem] tablet:px-[2rem] px-[1rem]">
                         <p className="flex items-start justify-between pt-[4.8rem] text-md text-black dark:text-white">Please contact us or drop us a message <span className='text-[#F79E1B] w-[2.3rem]'><RiMailSendLine/></span></p>
                         <form onSubmit={handleSubmit} className="space-y-[1.9rem] mt-4 tablet:mt-[4.3rem]">
                             <div>

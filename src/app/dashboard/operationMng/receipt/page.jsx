@@ -175,7 +175,7 @@ export default function Request() {
                     <HiOutlineSearch className="absolute left-3 top-1/2 transform -translate-y-1/2" />
                 </div>
                 <span
-                    className='flex border rounded-md bg-green-600'
+                    className='flex border ml-2 md:ml-0 rounded-md bg-green-600'
                     onClick={() => handleUploadReceipt()}
                 >
                     <Button className="">

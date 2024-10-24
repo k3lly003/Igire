@@ -182,15 +182,9 @@ export default function Request() {
   };
 
   return (
-    <div className="w-full p-6">
-      <div className="flex items-center justify-between mb-3">
+    <div className="w-full sm:p-6 p-2">
+      <div className="flex flex-col sm:flex-row sm:items-center items-start gap-3 justify-between mb-3">
         <h1 className="text-md font-semibold">Order requisition</h1>
-        {/* <Input
-          placeholder="Search product..."
-          value={globalFilter}
-          onChange={(event) => setGlobalFilter(event.target.value)}
-          className="max-w-sm"
-        /> */}
         <div className="relative w-80 ">
           <Input
             placeholder="Search by product..."
@@ -260,14 +254,8 @@ export default function Request() {
         </Button>
       </div>
 
-      <div className="flex items-center justify-between mt-4 mb-3">
+      <div className="flex flex-col sm:flex-row sm:items-center items-start gap-3 justify-between mt-4 mb-3">
         <h1 className="text-md font-semibold">Order Decline</h1>
-        {/* <Input
-          placeholder="Search product..."
-          value={deniedGlobalFilter}
-          onChange={(event) => setDeniedGlobalFilter(event.target.value)}
-          className="max-w-sm"
-        /> */}
         <div className="relative w-80 ">
           <Input
             placeholder="Search by product..."

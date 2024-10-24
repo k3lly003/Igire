@@ -14,10 +14,9 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-[#0B3004] dark:bg-gray-800 text-white dark:text:white  pt-10 pb-12 px-5 md:pt-[146px] md:pb-[186px] md:px-[130px]">
-      <div className="container mx-auto flex flex-col  md:flex-row md:space-x-10">
-        
-        <div className="flex flex-col w-full md:w-[50%] mb-8 md:mb-0">
+    <footer className="bg-[#0B3004] dark:bg-gray-800 text-white dark:text:white md:pt-[146px] md:pb-[186px] md:px-[130px] border">
+      <div className="container mx-auto flex flex-col  md:flex-row md:space-x-10">     
+        <div className="flex flex-col w-full md:w-[50%] md:mb-0 gap-5">
           
           <div className='mb-3 text-md flex items-center'>
             <Image src="/Logo.png" alt="IRO Logo" width={64} height={64} className="" />
@@ -34,9 +33,9 @@ const Footer = () => {
 
         <div className="flex flex-col md:flex-row w-full md:w-[50%] justify-between">
 
-          <div className="flex flex-col md:items-start mb-8 md:mb-0">
-            <h3 className="mb-4 text-[18px]">Quick link</h3> 
-            <ul>
+          <div className="flex flex-col md:items-start mb-8 md:mb-0 gap-5">
+            <h3 className="mb-4 text-[18px]">Quick link</h3>
+            <ul className='flex flex-col gap-3'>
               <li className="mb-3 text-sm">
                 <a href="/about" className=" hover:text-orange-400">About</a>
               </li>
@@ -51,7 +50,7 @@ const Footer = () => {
 
           <div className="flex flex-col">
             <h3 className="mb-4 text-[18px]">Follow us</h3> 
-            <div className="flex flex-col space-y-3">
+            <div className="flex flex-col space-y-3 gap-5">
               <div className=''>
                 <a href="https://www.youtube.com/@igirerwandaorganization7651" aria-label="Youtube" className='flex flex-row gap-2 items-center hover:text-orange-400'>
                   <FaYoutube className=" text-xl " /> 

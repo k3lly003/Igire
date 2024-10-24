@@ -62,7 +62,7 @@ iii Nulla non sapien vitae orci porttitor tristique. Vestibulum consequat felis 
         <div className="text-[20px] md:text-[24px] pb-[10px] md:pb-[20px] text-black dark:text-white text-center font-bold">Founders</div>
         <div className="flex flex-col md:flex-row justify-around items-center gap-[30px] md:gap-[50px] lg:gap-[100px]">
           <div className="text-center">
-            <Image src="/mbnd 1.png" alt="IRO Logo" width={220} height={250} className="py-[20px]" />
+            <Image src="/mbnd_1.png" alt="IRO Logo" width={220} height={250} className="py-[20px]" />
             <div className="pb-[10px] md:pb-[20px] font-bold text-gray-900 dark:text-white">Mbanda <br /> Innocent</div>
             <div className="text-gray-700 dark:text-gray-400">CO-FOUNDER</div>
           </div>

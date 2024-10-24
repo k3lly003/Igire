@@ -67,8 +67,8 @@ export default function Stock() {
     },
   });
   return (
-    <div className="w-full px-6">
-      <div className="flex  flex-col md:flex-row lg:items-center md:items-start justify-between gap-4 mb-4 mt-4">
+    <div className="w-full sm:px-6 px-2">
+      <div className="flex  flex-col sm:flex-row lg:items-center sm:items-start justify-between gap-3 mb-4 mt-4">
         <div>
           <p className="font-semibold">Stock overview</p>
         </div>

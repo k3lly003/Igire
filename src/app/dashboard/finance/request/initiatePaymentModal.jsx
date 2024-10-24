@@ -51,9 +51,9 @@ const InitiatePaymentModal = ({
                             <p className="text-sm">No product selected.</p>
                         )}
                     </div>
-                    <DialogFooter className="flex justify-start mt-6 space-x-2">
-                        <Button onClick={handleRelease} className="bg-[#0FA958] hover:bg-green-900 text-white px-4 py-2">Release</Button>
-                        <Button onClick={openPayoutModal} className="bg-red-500 hover:bg-red-800 text-white px-4 py-2">Pay Out</Button>
+                    <DialogFooter className="flex justify-start sm:justfy-end mt-6 space-x-2">
+                        <Button onClick={handleRelease} className="w-20 bg-[#0FA958] hover:bg-green-900 text-white px-4 py-2">Release</Button>
+                        <Button onClick={openPayoutModal} className="w-20 bg-red-500 hover:bg-red-800 text-white px-4 py-2">Pay Out</Button>
                     </DialogFooter>
                 </DialogContent>
             </Dialog>
