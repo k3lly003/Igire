@@ -1,92 +1,89 @@
 "use client";
 
-import { HiOutlineSearch } from 'react-icons/hi';
-import { useState } from 'react';
+import { HiOutlineSearch } from "react-icons/hi";
+import { useState } from "react";
 import {
   useReactTable,
   getCoreRowModel,
   getPaginationRowModel,
   getFilteredRowModel,
-} from '@tanstack/react-table';
-import { Datatable } from './datatable';
-import { dataComparePurchaseOrder, dataSimilarProducts } from './data';
-import { IoClose } from 'react-icons/io5'; // Import a close icon
- 
+} from "@tanstack/react-table";
+// import { Datatable } from './datatable';
+// import { dataComparePurchaseOrder, dataSimilarProducts } from './data';
+import { IoClose } from "react-icons/io5"; // Import a close icon
 
 export default function CeoCompare() {
+  const columnsComparePurchaseOrder = [
+    {
+      accessorKey: "id",
+      header: "Id",
+    },
+    {
+      accessorKey: "product",
+      header: "Product",
+    },
+    {
+      accessorKey: "dimension",
+      header: "Dimension",
+    },
+    {
+      accessorKey: "location",
+      header: "Location",
+    },
+    {
+      accessorKey: "comment",
+      header: "Comment",
+    },
+    {
+      accessorKey: "status",
+      header: "Status",
+    },
+  ];
 
-const columnsComparePurchaseOrder = [
-  {
-    accessorKey: 'id',
-    header: 'Id',
-  },
-  {
-    accessorKey: 'product',
-    header: 'Product',
-  },
-  {
-    accessorKey: 'dimension',
-    header: 'Dimension',
-  },
-  {
-    accessorKey: 'location',
-    header: 'Location',
-  },
-  {
-    accessorKey: 'comment',
-    header: 'Comment',
-  },
-  {
-    accessorKey: 'status',
-    header: 'Status',
-  },
-];
+  const columnsSimilarProducts = [
+    {
+      accessorKey: "id",
+      header: "Id",
+    },
+    {
+      accessorKey: "product",
+      header: "Product",
+    },
+    {
+      accessorKey: "dimension",
+      header: "Dimension",
+    },
+    {
+      accessorKey: "location",
+      header: "Location",
+    },
+    {
+      accessorKey: "brand",
+      header: "Brand",
+    },
+    {
+      accessorKey: "status",
+      header: "Status",
+    },
+  ];
 
-const columnsSimilarProducts = [
-  {
-    accessorKey: 'id',
-    header: 'Id',
-  },
-  {
-    accessorKey: 'product',
-    header: 'Product',
-  },
-  {
-    accessorKey: 'dimension',
-    header: 'Dimension',
-  },
-  {
-    accessorKey: 'location',
-    header: 'Location',
-  },
-  {
-    accessorKey: 'brand',
-    header: 'Brand',
-  },
-  {
-    accessorKey: 'status',
-    header: 'Status',
-  },
-];
-
-  const [isInquireDialogOpen, setIsInquireDialogOpen] = useState(false); 
-  const [isDenyDialogOpen, setIsDenyDialogOpen] = useState(false); 
-  const [isConfirmDialogOpen, setIsConfirmDialogOpen] = useState(false); 
+  const [isInquireDialogOpen, setIsInquireDialogOpen] = useState(false);
+  const [isDenyDialogOpen, setIsDenyDialogOpen] = useState(false);
+  const [isConfirmDialogOpen, setIsConfirmDialogOpen] = useState(false);
   const [comment, setComment] = useState("");
 
   const [searchStatus, setSearchStatus] = useState("");
 
-  const filteredDataSimilarProducts = dataSimilarProducts.filter((product) =>
-    product.status.toLowerCase().includes(searchStatus.toLowerCase())
-  );
+  // const filteredDataSimilarProducts = dataSimilarProducts.filter((product) =>
+  //   product.status.toLowerCase().includes(searchStatus.toLowerCase())
+  // );
 
   return (
     <div className="container px-6 pt-4 pb-2">
       <div className=" flex justify-end">
-        
         <button
           className="text-black border border-2 border-black py-1 px-2 rounded-md"
-          onClick={() => setIsInquireDialogOpen(true)}  
+          onClick={() => setIsInquireDialogOpen(true)}
         >
           Inquire
         </button>
@@ -94,18 +91,21 @@ const columnsSimilarProducts = [
 
       <div className="mb-4">
         <h3 className="text-lg mb-[10px]">Compare purchase order with stock</h3>
-        <Datatable columns={columnsComparePurchaseOrder} data={dataComparePurchaseOrder} isPaginated={false}/>
+        {/* <Datatable columns={columnsComparePurchaseOrder} data={dataComparePurchaseOrder} isPaginated={false}/> */}
       </div>
       <div className="flex justify-end space-x-4 ">
-        <button className="bg-green-500 text-white py-1 px-2 rounded-md"
-        onClick={() => {
-          setIsConfirmDialogOpen(true); // Open confirmation dialog when denied
-        }}
-      >Approve</button>
-        
+        <button
+          className="bg-green-500 text-white py-1 px-2 rounded-md"
+          onClick={() => {
+            setIsConfirmDialogOpen(true); // Open confirmation dialog when denied
+          }}
+        >
+          Approve
+        </button>
+
         <button
           className="bg-red-500 text-white py-1 px-2 rounded-md"
-          onClick={() => setIsDenyDialogOpen(true)}  
+          onClick={() => setIsDenyDialogOpen(true)}
         >
           Deny
         </button>
@@ -117,17 +117,20 @@ const columnsSimilarProducts = [
         </div>
         <div className="flex items-center w-full mb-4 max-w-lg">
           <div className="relative w-full">
-            <HiOutlineSearch className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={20} />
+            <HiOutlineSearch
+              className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
+              size={20}
+            />
             <input
               type="text"
               placeholder="filter by status..."
               value={searchStatus}
-              onChange={(e) => setSearchStatus(e.target.value)}  
+              onChange={(e) => setSearchStatus(e.target.value)}
               className="border bg-gray-100 pl-10 pr-4 rounded-md py-2 w-full"
             />
           </div>
         </div>
-        <Datatable columns={columnsSimilarProducts} data={filteredDataSimilarProducts}  isPaginated={true} />
+        {/* <Datatable columns={columnsSimilarProducts} data={filteredDataSimilarProducts}  isPaginated={true} /> */}
       </div>
 
       {isInquireDialogOpen && (
@@ -141,7 +144,9 @@ const columnsSimilarProducts = [
             </button>
 
             {/* Dialog Content */}
-            <h2 className="text-lg font-semibold mb-4 text-center">Inquire clarification</h2>
+            <h2 className="text-lg font-semibold mb-4 text-center">
+              Inquire clarification
+            </h2>
             <div className="space-y-4">
               <div>
                 <strong>PurchasedId:</strong> Mark board
@@ -153,7 +158,9 @@ const columnsSimilarProducts = [
                 <strong>Location:</strong> Class equipment
               </div>
               <div>
-                <label htmlFor="comment" className="block mb-2">Comment</label>
+                <label htmlFor="comment" className="block mb-2">
+                  Comment
+                </label>
                 <textarea
                   id="comment"
                   value={comment}
@@ -200,7 +207,9 @@ const columnsSimilarProducts = [
             </button>
 
             {/* Dialog Content */}
-            <h2 className="text-xl font-semibold mb-4 text-center">Deny Purchase</h2>
+            <h2 className="text-xl font-semibold mb-4 text-center">
+              Deny Purchase
+            </h2>
             <div className="space-y-4">
               <div>
                 <strong>PurchasedId:</strong> Mark board
@@ -212,7 +221,9 @@ const columnsSimilarProducts = [
                 <strong>Location:</strong> Class equipment
               </div>
               <div>
-                <label htmlFor="comment" className="block mb-2">Comment</label>
+                <label htmlFor="comment" className="block mb-2">
+                  Comment
+                </label>
                 <textarea
                   id="comment"
                   value={comment}
@@ -229,7 +240,6 @@ const columnsSimilarProducts = [
               <button
                 className="bg-green-500 text-white py-2 px-4 rounded-md"
                 onClick={() => {
-
                   setIsDenyDialogOpen(false);
                 }}
               >
@@ -259,7 +269,9 @@ const columnsSimilarProducts = [
             </button>
 
             {/* Dialog Content */}
-            <h2 className="text-xl font-semibold mb-4 text-center">Denied purchase</h2>
+            <h2 className="text-xl font-semibold mb-4 text-center">
+              Denied purchase
+            </h2>
             <div className="space-y-4">
               <div>
                 <strong>Item:</strong> Mark board
@@ -274,7 +286,9 @@ const columnsSimilarProducts = [
                 <strong>Quantity:</strong> 3 pcs
               </div>
               <div>
-                <label htmlFor="comment" className="block mb-2">Reason for denial</label>
+                <label htmlFor="comment" className="block mb-2">
+                  Reason for denial
+                </label>
                 <textarea
                   id="comment"
                   value={comment}
@@ -310,4 +324,3 @@ const columnsSimilarProducts = [
     </div>
   );
 }
-
