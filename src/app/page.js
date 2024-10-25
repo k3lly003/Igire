@@ -239,7 +239,7 @@ export default function Home() {
             <h1 className="text-[24px] font-bold">Partners</h1>
           </div>
           <div className="flex flex-wrap justify-center tablet:justify-between items-center">
-            <div className="w-[120px] tablet:w-[154px] flex justify-center bg-[#E2E2E2]">
+            <div className="w-[120px] tablet:w-[154px] flex justify-center">
               <Image
                 src="/mastercard.png"
                 alt="Mastercard"
@@ -248,7 +248,7 @@ export default function Home() {
                 className="transition ease-in-out delay-150 duration-300 transform hover:scale-105"
               />
             </div>
-            <div className="w-[120px] tablet:w-[154px] py-1 flex justify-center bg-[#E2E2E2]">
+            <div className="w-[120px] tablet:w-[154px] py-1 flex justify-center">
               <Image
                 src="/umurava.png"
                 alt="Umurava"
@@ -257,7 +257,7 @@ export default function Home() {
                 className="transition ease-in-out delay-150 duration-300 transform hover:scale-105"
               />
             </div>
-            <div className="w-[120px] tablet:w-[154px] flex justify-center bg-[#E2E2E2]">
+            <div className="w-[120px] tablet:w-[154px] flex justify-center">
               <Image
                 src="/usEmbacy.png"
                 alt="Embasy"
@@ -266,7 +266,7 @@ export default function Home() {
                 className="transition ease-in-out delay-150 duration-300 transform hover:scale-105"
               />
             </div>
-            <div className="w-[120px] tablet:w-[154px] py-3 flex justify-center bg-[rgb(226,226,221)]">
+            <div className="w-[120px] tablet:w-[154px] py-3 flex justify-center">
               <Image
                 src="/klab.png"
                 alt="Programs"
@@ -275,7 +275,7 @@ export default function Home() {
                 className="transition ease-in-out delay-150 duration-300 transform hover:scale-105"
               />
             </div>
-            <div className="w-[120px] tablet:w-[154px] py-3 bg-[rgb(226,226,224)]">
+            <div className="w-[120px] tablet:w-[154px] py-3">
               <Image
                 src="/iremboreal.png"
                 alt="Programs"
@@ -284,7 +284,7 @@ export default function Home() {
                 className="transition ease-in-out delay-150 duration-300 transform hover:scale-105"
               />
             </div>
-            <div className="w-[120px] tablet:w-[154px] py-3 bg-[rgb(226,226,224)]">
+            <div className="w-[120px] tablet:w-[154px] py-3">
               <Image
                 src="/israel.png"
                 alt="Programs"
